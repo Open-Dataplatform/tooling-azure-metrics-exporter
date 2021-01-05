@@ -1,0 +1,26 @@
+replicaCount: 1
+
+image:
+  repository: observability.westeurope.cloudapp.azure.com/azure-metrics-exporter/azure-metrics-exporter
+  tag: latest
+  pullPolicy: IfNotPresent
+  pullSecret: docker-config-azure-metrics-exporter-secret
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 9276
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+labels: {}
+
+config:
+  secretName: azure-metrics-exporter-config
+  secretMountPath: /azure-config
