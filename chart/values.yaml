@@ -24,3 +24,32 @@ labels: {}
 config:
   secretName: azure-metrics-exporter-config
   secretMountPath: /azure-config
+
+  configFile:
+    azure.yml: |
+      active_directory_authority_url: "https://login.microsoftonline.com/"
+      resource_manager_url: "https://management.azure.com/"
+      credentials:
+        subscription_id: <Subscription-id>
+        tenant_id: <Tenant_id>
+        client_id: <client_id>
+        client_secret: <client_secret>
+
+      targets:
+      - resource: "<resource_url>"
+        metrics:
+        - name: "SuccessfulRequests"
+        - name: "ServerErrors"
+        - name: "UserErrors"
+        - name: "ThrottledRequests"
+        - name: "IncomingRequests"
+        - name: "ActiveConnections"
+        - name: "ConnectionsOpened"
+        - name: "ConnectionsClosed"
+        - name: "Size"
+        - name: "Messages"
+        - name: "ActiveMessages"
+        - name: "DeadletteredMessages"
+        - name: "ScheduledMessages"
+        - name: "IncomingMessages"
+        - name: "OutgoingMessages"
