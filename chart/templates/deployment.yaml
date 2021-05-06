@@ -20,11 +20,11 @@ spec:
     metadata:
       annotations:
         checksum/config: {{ toYaml .Values.configuration | sha256sum }}
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9276"
       labels:
         app.kubernetes.io/name: {{ include "azure_metrics_exporter.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
-      annotations:
-        prometheus.io/scrape: "true"
 {{- with .Values.labels }}
 {{ toYaml . | indent 8 }}
 {{- end }}
